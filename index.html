@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Listify with zebra striping</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+		<script type='text/javascript' src='jquery.listify.js'></script>
+		<script type="text/javascript">
+
+jQuery(document).ready(function() {
+   $("table.list").each(function() { $("tbody tr:has(td):odd", this).addClass("alt") }).not(".nolistify").listify();
+});
+
+		</script>
+		<style>
+.over { background: yellow !important ; }
+.alt { background: pink; }
+p { margin: 10px 0; }
+th { background: #0066b2; color: #fff; font-weight: bold; }
+th, td { padding: 2px 5px; }
+		</style>
+	</head>
+
+	<body>
+		<h1>Listify with zebra striping</h1>
+
+		<p>This plugin makes tables with clickable rows a little more user friendly. If the plugin detects a row with a single link, it makes the entire row clickable, and applies a nice hover effect.</p>
+
+		<div id="content">
+
+			<table class="list" border="1" cellpadding="2">
+				<tr>
+					<th>Name</th>
+					<th>Company</th>
+					<th>Function</th>
+				</tr>
+				<tr>
+
+					<td><a href="#ck">Clark Kent</a></td>
+					<td>DC Comics</td>
+					<td>Superman</td>
+				</tr>
+				<tr>
+					<td><a href="#bw">Bruce Wayne</a></td>
+					<td>DC Comics</td>
+
+					<td>Batman</td>
+				</tr>
+				<tr>
+					<td><a href="#pp">Peter Parker</a></td>
+					<td>Marvel Comics</td>
+					<td>Spiderman</td>
+				</tr>
+
+				<tr>
+					<td><a href="#bb">Bruce Banner</a></td>
+					<td>Marvel Comics</td>
+					<td>Hulk</td>
+				</tr>
+				<tr>
+					<td><a href="#wk">Walter Kovacs</a></td>
+
+					<td>DC Comics</td>
+					<td>Rorschach</td>
+				</tr>
+			</table>
+
+			<p>And another list (actually it's the same one, copied and pasted -- I'm lazy like that) to show that striping works with multiple lists.</p>
+
+			<table class="list" border="1" cellpadding="2">
+				<tr>
+					<th>Name</th>
+					<th>Company</th>
+					<th>Function</th>
+				</tr>
+				<tr>
+
+					<td><a href="#ck">Clark Kent</a></td>
+					<td>DC Comics</td>
+					<td>Superman</td>
+				</tr>
+				<tr>
+					<td><a href="#bw">Bruce Wayne</a></td>
+					<td>DC Comics</td>
+
+					<td>Batman</td>
+				</tr>
+				<tr>
+					<td><a href="#pp">Peter Parker</a></td>
+					<td>Marvel Comics</td>
+					<td>Spiderman</td>
+				</tr>
+
+				<tr>
+					<td><a href="#bb">Bruce Banner</a></td>
+					<td>Marvel Comics</td>
+					<td>Hulk</td>
+				</tr>
+				<tr>
+					<td><a href="#wk">Walter Kovacs</a></td>
+
+					<td>DC Comics</td>
+					<td>Rorschach</td>
+				</tr>
+			</table>
+
+	</body>
+</html>
