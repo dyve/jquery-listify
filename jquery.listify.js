@@ -47,30 +47,42 @@
 			hoverClass: "over",
 			cursorType: "pointer",
 			selector: "tbody tr",
-			hideLink: false
+			hideLink: false,
+			busyToken: 'listify-busy'
 		}, settings);
 		$(settings.selector, this).each(function() {
 			var anchor = $("a", this);
 			if (anchor.length == 1) {
-				anchor = $(anchor.get(0));
-				var thickbox = anchor.is(".thickbox");
-				var link = anchor.attr("href");
+				anchor = anchor.get(0);
+				var $anchor = $(anchor);
+				var link = $anchor.attr("href");
 				if (link) {
 					if (settings.hideLink) {
 						var text = anchor.html();
-						anchor.after(text).hide();	
+						$anchor.after(text).hide();	
 					}
+					$anchor.click(function() {
+						$anchor.data(settings.busyToken, true);
+						return true;
+					});
 					$(this)
 						.css("cursor", settings.cursorType)
 						.hover(
 							function() { $(this).addClass(settings.hoverClass) },
 							function() { $(this).removeClass(settings.hoverClass) }
 						)
-						.click(function() {
-							if (thickbox) {
-								anchor.click();
-							} else {
-								window.location.href = link;
+						.click(function(e) {
+							if (!$anchor.data(settings.busyToken)) {
+								$anchor.data(settings.busyToken, true);
+								var events = $.data(anchor, 'events');
+								var result = true;
+								if (events && events.click) {
+									result = $anchor.click();
+								}
+								$anchor.data(settings.busyToken, false);
+								if (result) {
+									window.location.href = link;
+								}
 							}
 						});
 				}
