@@ -39,12 +39,13 @@
 							if (!$anchor.data(settings.busyToken)) {
 								$anchor.data(settings.busyToken, true);
 								var events = $.data(anchor, 'events');
-								var result = true;
+								var launch = true;
 								if (events && events.click) {
-									result = $anchor.click();
+									$anchor.click();
+									launch = false;
 								}
 								$anchor.data(settings.busyToken, false);
-								if (result) {
+								if (launch) {
 									window.location.href = link;
 								}
 							}
